@@ -11,6 +11,8 @@ function loadEventListeners() {
   form.addEventListener("submit", addTask);
   // Remove task
   taskList.addEventListener("click", removeTask);
+  // Clear (remove) all tasks at once
+  clearBtn.addEventListener("click", clearTasks);
 }
 
 // Call the function
@@ -53,3 +55,20 @@ function removeTask(e) {
     }
   }
 }
+// Clear (remove) all Tasks
+function clearTasks(e) {
+  if (e.target.previousElementSibling.classList.contains("collection")) {
+    if (confirm("Are you sure about this my sweet princess?")) {
+      e.target.previousElementSibling.remove();
+    }
+  }
+}
+
+// // Some other options to clear tasks, without the confirm alert
+// function clearTasks(e) {
+//   //   taskList.innerHTML = '';
+//   // this one is faster than above
+//   while (taskList.firstChild) {
+//     taskList.removeChild(taskList.firstChild);
+//   }
+// }
