@@ -13,6 +13,8 @@ function loadEventListeners() {
   taskList.addEventListener("click", removeTask);
   // Clear (remove) all tasks at once
   clearBtn.addEventListener("click", clearTasks);
+  // Filter tasks event
+  filter.addEventListener("keyup", filterTasks);
 }
 
 // Call the function
@@ -64,11 +66,16 @@ function clearTasks(e) {
   }
 }
 
-// // Some other options to clear tasks, without the confirm alert
-// function clearTasks(e) {
-//   //   taskList.innerHTML = '';
-//   // this one is faster than above
-//   while (taskList.firstChild) {
-//     taskList.removeChild(taskList.firstChild);
-//   }
-// }
+// Filter Tasks
+function filterTasks(e) {
+  const text = e.target.value.toLowerCase();
+
+  document.querySelectorAll(".collection-item").forEach(function (task) {
+    const item = task.firstChild.textContent;
+    if (item.toLowerCase().indexOf(text) != -1) {
+      task.style.display = "block";
+    } else {
+      task.style.display = "none";
+    }
+  });
+}
