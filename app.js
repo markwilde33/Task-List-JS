@@ -9,6 +9,8 @@ const taskInput = document.querySelector("#task");
 function loadEventListeners() {
   // Add task event
   form.addEventListener("submit", addTask);
+  // Remove task
+  taskList.addEventListener("click", removeTask);
 }
 
 // Call the function
@@ -30,7 +32,7 @@ function addTask(e) {
     // Add class
     link.className = "delete-item secondary-content";
     // Add icon html
-    link.innerHTML = "<i class='fa fa-remove'> </i>";
+    link.innerHTML = '<i class="fa fa-remove"> </i>';
     // Append the link to the li
     li.appendChild(link);
 
@@ -41,4 +43,13 @@ function addTask(e) {
     taskInput.value = "";
   }
   e.preventDefault();
+}
+
+// Remove Task
+function removeTask(e) {
+  if (e.target.parentElement.classList.contains("delete-item")) {
+    if (confirm("Are you sure about this comrade?")) {
+      e.target.parentElement.parentElement.remove();
+    }
+  }
 }
