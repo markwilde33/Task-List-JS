@@ -69,13 +69,14 @@ function clearTasks(e) {
 // Filter Tasks
 function filterTasks(e) {
   const text = e.target.value.toLowerCase();
+  const collection = document.querySelectorAll(".collection-item")
 
-  document.querySelectorAll(".collection-item").forEach(function (task) {
-    const item = task.firstChild.textContent;
+  collection.forEach(function (taskItem) {
+    const item = taskItem.firstChild.textContent;
     if (item.toLowerCase().indexOf(text) != -1) {
-      task.style.display = "block";
+      taskItem.style.display = "block";
     } else {
-      task.style.display = "none";
+      taskItem.style.display = "none";
     }
   });
 }
